@@ -4,8 +4,11 @@ using GolBet.Services.Implementations;
 using GolBet.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+using GolBet.Repositories.Data;
 
 namespace GolBet.Web.Controllers;
+
 
 public class MatchesController : Controller
 {
@@ -37,6 +40,7 @@ public class MatchesController : Controller
     }
 
     // GET /Matches/Create 
+    [Authorize(Roles = DbSeeder.AdminRole)]
     public async Task<IActionResult> Create()
     {
         await LoadTeamsAsync();
