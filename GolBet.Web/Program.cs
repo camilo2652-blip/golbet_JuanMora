@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 
 var culture = new CultureInfo("es-CO");
+culture.NumberFormat = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
+culture.NumberFormat.NumberGroupSeparator = "";
 
 CultureInfo.DefaultThreadCurrentCulture = culture;
 
